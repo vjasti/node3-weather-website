@@ -78,7 +78,6 @@ app.get('*', (req,res) => {
         name: 'Ramakrishna'
     })
 })
-
 app.listen(3000, () => {
     console.log('Server is started and listiening on port no 3000')
 })
