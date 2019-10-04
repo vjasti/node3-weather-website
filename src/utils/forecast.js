@@ -9,7 +9,11 @@ const forecast = (lat, lng, callback) => {
         } else if(body.code) {
             callback(body.error, undefined)
         } else {
-            var summary = `${body.daily.data[0].summary} Currently there is ${body.currently.precipProbability%100}% probability of rain and today's max and min temparatures are ${body.daily.data[0].temperatureHigh}c and ${body.daily.data[0].temperatureLow}c`
+            var summary = {
+                dailySummary: body.daily.data[0].summary,
+                currentlySummary: `Currently ${body.currently.summary} and there is ${body.currently.precipProbability*100}% probability of rain` ,
+                temparatures: `today's max and min temparatures are ${body.daily.data[0].temperatureHigh}c and ${body.daily.data[0].temperatureLow}c`
+            }
             callback(undefined, summary)
         }
     })
